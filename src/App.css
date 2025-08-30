@@ -1,38 +1,117 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* تصميم عام */
+body {
+  margin: auto;
+  margin-top: 20px;
+  font-family: "Poppins", sans-serif;
+  background: #1e1e2f;
+  color: #fff;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  height: 100vh;
+}
+
+.app {
+  text-align: center;
+ 
+}
+
+/* اختيار مستوى الصعوبة */
+.difficulty {
+  font-size: 18px;
+}
+.difficulty select {
+  padding: 5px 10px;
+  margin-left: 5px;
+  border-radius: 5px;
+  border: none;
+}
+
+/* الأزرار */
+.controls {
+  margin: 10px;
+  font-size: 18px;
+}
+.restart-btn {
+  background: #ff9800;
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  font-size: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.restart-btn:hover {
+  background: #ff5722;
+}
+
+/* أفضل نتيجة */
+.best-score {
+  color: #00e676;
+}
+
+/* شبكة الكروت */
+.board {
+  display: grid;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+/* تكيف حجم الشبكة حسب المستوى */
+.app select[value="easy"] ~ .board {
+  grid-template-columns: repeat(4, 100px);
+}
+.app select[value="medium"] ~ .board {
+  grid-template-columns: repeat(4, 100px);
+}
+.app select[value="hard"] ~ .board {
+  grid-template-columns: repeat(6, 100px);
+}
+
+/* تصميم الكروت */
+.card {
+  width: 100px;
+  height: 120px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+.card-inner {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+.card-back {
+  background: #3f51b5;
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.card-front {
+  background: #fff;
+  color: black;
+  transform: rotateY(180deg);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* رسالة الفوز */
+.win-msg {
+  font-size: 22px;
+  color: #00e676;
 }
